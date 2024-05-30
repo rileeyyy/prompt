@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Writing Prompt Generator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="text-center mt-5">
+      <h1>Picking writing prompts so you don't have to!!</h1>
+      <div class="dropdown mt-3">
+        <button class="btn btn-primary" onclick="toggleDropdown()">Select Genre</button>
+        <div id="dropdownMenu" class="dropdown-menu">
+          <a class="dropdown-item" href="#" onclick="getNonfiction()">Non-fiction</a>
+          <a class="dropdown-item" href="#" onclick="getFiction()">Fiction</a>
+          <a class="dropdown-item" href="#" onclick="getFantasy()">Fantasy</a>
+          <a class="dropdown-item" href="#" onclick="getScifi()">Sci-Fi</a>
+          <a class="dropdown-item" href="#" onclick="getMystery()">Mystery</a>
+          <a class="dropdown-item" href="#" onclick="getHistoricalfiction()">Historical Fiction</a>
+          <a class="dropdown-item" href="#" onclick="getInformative()">Informative</a>
+        </div>
+      </div>
+      <h3 id="out" class="mt-5"></h3>
+    </div>
+  </div>
+
+  <script>
+    function toggleDropdown() {
+      const dropdownMenu = document.getElementById('dropdownMenu');
+      dropdownMenu.classList.toggle('show');
+    }
+
+    window.onclick = function(event) {
+      if (!event.target.matches('.btn')) {
+        const dropdowns = document.getElementsByClassName('dropdown-menu');
+        for (let i = 0; i < dropdowns.length; i++) {
+          const openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+
+    function getNonfiction() {
+      const nonfictionprompts = ['Write about a memorable travel experience.', 'Discuss the impact of technology on society.', 'Describe a historical event from a personal perspective.', 'Analyze the impact of social media on mental health.', 'Discuss the importance of renewable energy in combating climate change.', 'Reflect on a significant life lesson you learned from a challenging experience.', 'Explore the history and cultural significance of a traditional festival.', 'Investigate the role of education in reducing poverty.', 'Examine the effects of globalization on local economies.', 'Describe a memorable encounter with a person from a different culture.', 'Discuss the ethical implications of genetic engineering.', 'Reflect on the meaning of success and how it varies across cultures.', 'Analyze the portrayal of gender roles in contemporary media.'];
+      const NFrandomIndex = Math.floor(Math.random() * nonfictionprompts.length);
+      const subject = nonfictionprompts[NFrandomIndex];
+      document.getElementById('out').textContent = subject;
+    }
+
+    function getFiction() {
+      const fictionprompts = ['Create a story about a character who discovers a hidden world.', 'Write a narrative set in a post-apocalyptic society.', 'Tell a tale about a person who can time-travel.', 'Craft a story about a character who gains superpowers overnight.', 'Write a narrative set in a world where dreams become reality.', 'Tell a tale about a group of survivors after a zombie apocalypse.', 'Create a story about a sentient robot searching for its purpose.', 'Describe a society where emotions are forbidden.', 'Write about a person who wakes up in a different body every day.', 'Craft a narrative about a cursed object with dark powers.', 'Tell a story about a parallel universe where magic is real.', 'Create a dystopian society where individuality is suppressed.'];
+      const FrandomIndex = Math.floor(Math.random() * fictionprompts.length);
+      const subject = fictionprompts[FrandomIndex];
+      document.getElementById('out').textContent = subject;
+    }
+
+    function getFantasy() {
+      const fantasyprompts = ['Craft a story about a quest to defeat an evil sorcerer.', 'Describe a kingdom ruled by talking animals.', 'Write about a magical item that grants wishes.', 'Craft a story about a quest to restore a shattered kingdom.', 'Describe a world where humans coexist with mythical creatures.', 'Write about a magical academy hidden from the mundane world.', 'Tell a tale about a prophecy that foretells the end of magic.', 'Create a narrative about a war between elemental kingdoms.', 'Describe a journey to find the Fountain of Youth.', 'Write about a cursed forest and the adventurers who dare to enter.', 'Craft a story about a group of misfit heroes saving the world.', 'Describe a kingdom ruled by an immortal sorcerer.'];
+      const FarandomIndex = Math.floor(Math.random() * fantasyprompts.length);
+      const subject = fantasyprompts[FarandomIndex];
+      document.getElementById('out').textContent = subject;
+    }
+
+    function getScifi() {
+      const scifiprompts = ['Imagine a future where humans live on Mars.', 'Describe a world where artificial intelligence has taken over.', 'Write about a society where everyone has cybernetic implants.', 'Imagine a future where humans upload their consciousness into computers.', 'Describe a society where emotions are regulated by technology.', 'Write about a space colony facing a mysterious threat.', 'Craft a story about a time-traveling scientist trying to prevent a disaster.', 'Describe a world where humans have colonized multiple galaxies.', 'Write about a society where memories can be bought and sold.', 'Imagine a future where humanity is on the brink of extinction due to an alien invasion.', 'Describe a planet where evolution has taken a drastically different path.', 'Write about a corporation that controls every aspect of daily life.'];
+      const SFarandomIndex = Math.floor(Math.random() * scifiprompts.length);
+      const subject = scifiprompts[SFarandomIndex];
+      document.getElementById('out').textContent = subject;
+    }
+
+    function getMystery() {
+      const mysteryprompts = ['Create a story about a detective solving a murder case.', 'Write about a missing person who mysteriously reappears.', 'Describe a haunted house and the secrets it holds.', 'Create a story about a series of seemingly unrelated murders connected by a common thread.', 'Write about a detective investigating a disappearance in a small, isolated town.', 'Describe a heist gone wrong and the consequences for those involved.', 'Craft a narrative about a mysterious artifact with supernatural powers.', 'Write about a cold case that gets reopened decades later.', 'Create a story about a con artist who gets in over their head.', 'Describe a detective solving a murder in a futuristic city.', 'Write about a haunted object that brings tragedy to its owners.', 'Craft a narrative about a conspiracy within a government agency.', 'Describe a locked-room mystery where the killer\'s identity seems impossible to determine.'];
+      const MrandomIndex = Math.floor(Math.random() * mysteryprompts.length);
+      const subject = mysteryprompts[MrandomIndex];
+      document.getElementById('out').textContent = subject;
+    }
+
+    function getHistoricalfiction() {
+      const historicalfictionprompts = ['Write about a love story set during World War II.', 'Describe a famous historical event from an alternative perspective.', 'Create a narrative about a character living during the Renaissance.', 'Write about a forbidden romance between individuals from warring factions.', 'Describe a rebellion against an oppressive monarchy in medieval times.', 'Craft a story about a famous historical figure from the perspective of their spouse.', 'Write about a journey along the Silk Road during ancient times.', 'Describe a family\'s struggle to survive during a historical natural disaster.', 'Create a narrative about a slave\'s quest for freedom in the American South.', 'Write about a secret society operating during a pivotal moment in history.', 'Craft a story about a spy during World War I.', 'Describe a forbidden love affair in Victorian-era England.', 'Write about a group of explorers searching for a legendary lost city.'];
+      const HFarandomIndex = Math.floor(Math.random() * historicalfictionprompts.length);
+      const subject = historicalfictionprompts[HFarandomIndex];
+      document.getElementById('out').textContent = subject;
+    }
+
+    function getInformative() {
+      const informativeprompts = ['Explain how to build a birdhouse.', 'Discuss the benefits of a vegan diet.', 'Describe the process of photosynthesis.', 'Explain the science behind climate change and its effects on the planet.', 'Discuss the process of artificial intelligence and its applications in everyday life.', 'Describe the history and cultural significance of a traditional dance.', 'Explain the benefits of meditation for mental health.', 'Discuss the impact of deforestation on biodiversity.', 'Describe the process of sustainable farming and its importance.', 'Explain the role of neurotransmitters in regulating mood and behavior.', 'Discuss the potential benefits and drawbacks of universal basic income.', 'Explain the concept of herd immunity and its importance in vaccination.', 'Describe the psychological effects of long-term isolation on the human mind.'];
+      const IarandomIndex = Math.floor(Math.random() * informativeprompts.length);
+      const subject = informativeprompts[IarandomIndex];
+      document.getElementById('out').textContent = subject;
+    }
+  </script>
+</body>
+</html>

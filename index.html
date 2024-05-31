@@ -25,10 +25,170 @@
         </div>
       </div>
       <h3 id="out" class="mt-5"></h3>
+      <h4>too complex? simpler one here!</h4>
+      <h3 id="out2" class="mt-5"></h3>
     </div>
   </div>
 
   <script>
+    // Simpler prompts
+    const simplerPrompts = {
+      "Non-fiction": [
+        "Write about a memorable travel experience.",
+        "Discuss the impact of technology on society.",
+        "Describe a historical event from a personal perspective.",
+        "Analyze the impact of social media on mental health.",
+        "Discuss the importance of renewable energy in combating climate change.",
+        "Reflect on a significant life lesson you learned from a challenging experience.",
+        "Explore the history and cultural significance of a traditional festival.",
+        "Investigate the role of education in reducing poverty.",
+        "Examine the effects of globalization on local economies.",
+        "Describe a memorable encounter with a person from a different culture.",
+        "Discuss the ethical implications of genetic engineering.",
+        "Reflect on the meaning of success and how it varies across cultures.",
+        "Analyze the portrayal of gender roles in contemporary media.",
+        "Describe the benefits of reading for personal growth.",
+        "Explain the process of setting and achieving goals.",
+        "Discuss the importance of critical thinking in everyday life.",
+        "Write about a personal challenge you overcame and what you learned from it.",
+        "Describe a hobby or interest and its significance in your life.",
+        "Reflect on the value of friendships and relationships in your life.",
+        "Discuss the impact of music on emotions and mood.",
+      ],
+      "Fiction": [
+        "Create a story about a character who discovers a hidden world.",
+        "Write a narrative set in a post-apocalyptic society.",
+        "Tell a tale about a person who can time-travel.",
+        "Craft a story about a character who gains superpowers overnight.",
+        "Write a narrative set in a world where dreams become reality.",
+        "Tell a tale about a group of survivors after a zombie apocalypse.",
+        "Create a story about a sentient robot searching for its purpose.",
+        "Describe a society where emotions are forbidden.",
+        "Write about a person who wakes up in a different body every day.",
+        "Craft a narrative about a cursed object with dark powers.",
+        "Tell a story about a parallel universe where magic is real.",
+        "Create a dystopian society where individuality is suppressed.",
+        "Write about a journey to an unknown destination.",
+        "Craft a narrative about a character confronting their greatest fear.",
+        "Describe a day in the life of a character with extraordinary abilities.",
+        "Write a story about a friendship that transcends time and space.",
+        "Create a narrative about a hidden treasure and the quest to find it.",
+        "Tell a tale about a character who discovers a hidden talent.",
+        "Craft a story about a mythical creature living in modern society.",
+        "Describe a world where everyone has a unique superpower.",
+      ],
+      "Fantasy": [
+        "Craft a story about a quest to defeat an evil sorcerer.",
+        "Describe a kingdom ruled by talking animals.",
+        "Write about a magical item that grants wishes.",
+        "Craft a story about a quest to restore a shattered kingdom.",
+        "Describe a world where humans coexist with mythical creatures.",
+        "Write about a magical academy hidden from the mundane world.",
+        "Tell a tale about a prophecy that foretells the end of magic.",
+        "Create a narrative about a war between elemental kingdoms.",
+        "Describe a journey to find the Fountain of Youth.",
+        "Write about a cursed forest and the adventurers who dare to enter.",
+        "Craft a story about a group of misfit heroes saving the world.",
+        "Describe a kingdom ruled by an immortal sorcerer.",
+        "Write about a character who discovers they are the chosen one.",
+        "Craft a narrative about a lost civilization and its secrets.",
+        "Tell a tale about a character with the ability to speak to animals.",
+        "Create a story about a magical creature hiding in plain sight.",
+        "Describe a world where dreams have the power to change reality.",
+        "Write about a legendary hero and their epic quest.",
+        "Craft a narrative about a forbidden love between different magical races.",
+        "Tell a tale about a hidden portal to another realm.",
+      ],
+      "Sci-Fi": [
+        "Imagine a future where humans live on Mars.",
+        "Describe a world where artificial intelligence has taken over.",
+        "Write about a society where everyone has cybernetic implants.",
+        "Imagine a future where humans upload their consciousness into computers.",
+        "Describe a society where emotions are regulated by technology.",
+        "Write about a space colony facing a mysterious threat.",
+        "Craft a story about a time-traveling scientist trying to prevent a disaster.",
+        "Describe a world where humans have colonized multiple galaxies.",
+        "Write about a society where memories can be bought and sold.",
+        "Imagine a future where humanity is on the brink of extinction due to an alien invasion.",
+        "Describe a planet where evolution has taken a drastically different path.",
+        "Write about a corporation that controls every aspect of daily life.",
+        "Craft a narrative about a virtual reality game that becomes reality.",
+        "Describe a dystopian society where emotions are outlawed.",
+        "Write about a future where genetic modification is commonplace.",
+        "Craft a story about a robot uprising against humanity.",
+        "Describe a world where technology has advanced to the point of immortality.",
+        "Write about a future where Earth is abandoned for new habitable planets.",
+        "Craft a narrative about a rogue AI threatening civilization.",
+        "Describe a society where humans have merged with machines.",
+      ],
+      "Mystery": [
+        "Create a story about a detective solving a murder case.",
+        "Write about a missing person who mysteriously reappears.",
+        "Describe a haunted house and the secrets it holds.",
+        "Create a story about a series of seemingly unrelated murders connected by a common thread.",
+        "Write about a detective investigating a disappearance in a small, isolated town.",
+        "Describe a heist gone wrong and the consequences for those involved.",
+        "Craft a narrative about a mysterious artifact with supernatural powers.",
+        "Write about a cold case that gets reopened decades later.",
+        "Create a story about a con artist who gets in over their head.",
+        "Describe a detective solving a murder in a futuristic city.",
+        "Write about a haunted object that brings tragedy to its owners.",
+        "Craft a narrative about a conspiracy within a government agency.",
+        "Describe a locked-room mystery where the killer's identity seems impossible to determine.",
+        "Write about a detective who discovers a secret society.",
+        "Craft a story about a spy infiltrating an enemy organization.",
+        "Describe a town plagued by unexplained phenomena.",
+        "Write about a whistleblower uncovering corporate corruption.",
+        "Craft a narrative about a journalist investigating a political scandal.",
+        "Describe a murder mystery set in a remote wilderness.",
+        "Write about a detective facing their greatest adversary.",
+      ],
+      "Historical Fiction": [
+        "Write about a love story set during World War II.",
+        "Describe a famous historical event from an alternative perspective.",
+        "Create a narrative about a character living during the Renaissance.",
+        "Write about a forbidden romance between individuals from warring factions.",
+        "Describe a rebellion against an oppressive monarchy in medieval times.",
+        "Craft a story about a famous historical figure from the perspective of their spouse.",
+        "Write about a journey along the Silk Road during ancient times.",
+        "Describe a family's struggle to survive during a historical natural disaster.",
+        "Create a narrative about a slave's quest for freedom in the American South.",
+        "Write about a secret society operating during a pivotal moment in history.",
+        "Craft a story about a spy during World War I.",
+        "Describe a forbidden love affair in Victorian-era England.",
+        "Write about a group of explorers searching for a legendary lost city.",
+        "Craft a narrative about a historical figure encountering a mythical creature.",
+        "Describe a day in the life of a commoner during a historical period.",
+        "Write about a historical conspiracy theory and its repercussions.",
+        "Craft a story about a historical artifact and its journey through time.",
+        "Describe a famous speech from history and its impact.",
+        "Write about a historical figure experiencing a moment of doubt.",
+        "Craft a narrative about a pivotal battle in history and its aftermath.",
+      ],
+      "Informative": [
+        "Explain how to build a birdhouse.",
+        "Discuss the benefits of a vegan diet.",
+        "Describe the process of photosynthesis.",
+        "Explain the science behind climate change and its effects on the planet.",
+        "Discuss the process of artificial intelligence and its applications in everyday life.",
+        "Describe the history and cultural significance of a traditional dance.",
+        "Explain the benefits of meditation for mental health.",
+        "Discuss the impact of deforestation on biodiversity.",
+        "Describe the process of sustainable farming and its importance.",
+        "Explain the role of neurotransmitters in regulating mood and behavior.",
+        "Discuss the potential benefits and drawbacks of universal basic income.",
+        "Explain the concept of herd immunity and its importance in vaccination.",
+        "Describe the psychological effects of long-term isolation on the human mind.",
+        "Discuss the importance of exercise for physical and mental health.",
+        "Explain the process of DNA replication and its significance.",
+        "Describe the history and cultural significance of a traditional festival.",
+        "Discuss the impact of social media on interpersonal relationships.",
+        "Explain the process of natural selection and its role in evolution.",
+        "Describe the benefits of volunteering for the community and personal growth.",
+        "Discuss the ethical considerations of genetic engineering in humans.",
+      ]
+    };
+
     function toggleDropdown() {
       const dropdownMenu = document.getElementById('dropdownMenu');
       dropdownMenu.classList.toggle('show');
@@ -46,55 +206,71 @@
       }
     }
 
+    function displayPrompts(mainPrompt, simplerPrompt) {
+      document.getElementById('out').textContent = mainPrompt;
+      document.getElementById('out2').textContent = simplerPrompt;
+    }
+
+    function getRandomSimplerPrompt(genre) {
+      const randomIndex = Math.floor(Math.random() * simplerPrompts[genre].length);
+      return simplerPrompts[genre][randomIndex];
+    }
+
     function getNonfiction() {
       const nonfictionprompts = ['Write about a memorable travel experience.', 'Discuss the impact of technology on society.', 'Describe a historical event from a personal perspective.', 'Analyze the impact of social media on mental health.', 'Discuss the importance of renewable energy in combating climate change.', 'Reflect on a significant life lesson you learned from a challenging experience.', 'Explore the history and cultural significance of a traditional festival.', 'Investigate the role of education in reducing poverty.', 'Examine the effects of globalization on local economies.', 'Describe a memorable encounter with a person from a different culture.', 'Discuss the ethical implications of genetic engineering.', 'Reflect on the meaning of success and how it varies across cultures.', 'Analyze the portrayal of gender roles in contemporary media.'];
       const NFrandomIndex = Math.floor(Math.random() * nonfictionprompts.length);
-      const subject = nonfictionprompts[NFrandomIndex];
-      document.getElementById('out').textContent = subject;
+      const mainPrompt = nonfictionprompts[NFrandomIndex];
+      const simplerPrompt = getRandomSimplerPrompt("Non-fiction");
+      displayPrompts(mainPrompt, simplerPrompt);
     }
 
     function getFiction() {
       const fictionprompts = ['Create a story about a character who discovers a hidden world.', 'Write a narrative set in a post-apocalyptic society.', 'Tell a tale about a person who can time-travel.', 'Craft a story about a character who gains superpowers overnight.', 'Write a narrative set in a world where dreams become reality.', 'Tell a tale about a group of survivors after a zombie apocalypse.', 'Create a story about a sentient robot searching for its purpose.', 'Describe a society where emotions are forbidden.', 'Write about a person who wakes up in a different body every day.', 'Craft a narrative about a cursed object with dark powers.', 'Tell a story about a parallel universe where magic is real.', 'Create a dystopian society where individuality is suppressed.'];
       const FrandomIndex = Math.floor(Math.random() * fictionprompts.length);
-      const subject = fictionprompts[FrandomIndex];
-      document.getElementById('out').textContent = subject;
+      const mainPrompt = fictionprompts[FrandomIndex];
+      const simplerPrompt = getRandomSimplerPrompt("Fiction");
+      displayPrompts(mainPrompt, simplerPrompt);
     }
 
     function getFantasy() {
       const fantasyprompts = ['Craft a story about a quest to defeat an evil sorcerer.', 'Describe a kingdom ruled by talking animals.', 'Write about a magical item that grants wishes.', 'Craft a story about a quest to restore a shattered kingdom.', 'Describe a world where humans coexist with mythical creatures.', 'Write about a magical academy hidden from the mundane world.', 'Tell a tale about a prophecy that foretells the end of magic.', 'Create a narrative about a war between elemental kingdoms.', 'Describe a journey to find the Fountain of Youth.', 'Write about a cursed forest and the adventurers who dare to enter.', 'Craft a story about a group of misfit heroes saving the world.', 'Describe a kingdom ruled by an immortal sorcerer.'];
       const FarandomIndex = Math.floor(Math.random() * fantasyprompts.length);
-      const subject = fantasyprompts[FarandomIndex];
-      document.getElementById('out').textContent = subject;
+      const mainPrompt = fantasyprompts[FarandomIndex];
+      const simplerPrompt = getRandomSimplerPrompt("Fantasy");
+      displayPrompts(mainPrompt, simplerPrompt);
     }
 
     function getScifi() {
       const scifiprompts = ['Imagine a future where humans live on Mars.', 'Describe a world where artificial intelligence has taken over.', 'Write about a society where everyone has cybernetic implants.', 'Imagine a future where humans upload their consciousness into computers.', 'Describe a society where emotions are regulated by technology.', 'Write about a space colony facing a mysterious threat.', 'Craft a story about a time-traveling scientist trying to prevent a disaster.', 'Describe a world where humans have colonized multiple galaxies.', 'Write about a society where memories can be bought and sold.', 'Imagine a future where humanity is on the brink of extinction due to an alien invasion.', 'Describe a planet where evolution has taken a drastically different path.', 'Write about a corporation that controls every aspect of daily life.'];
       const SFarandomIndex = Math.floor(Math.random() * scifiprompts.length);
-      const subject = scifiprompts[SFarandomIndex];
-      document.getElementById('out').textContent = subject;
+      const mainPrompt = scifiprompts[SFarandomIndex];
+      const simplerPrompt = getRandomSimplerPrompt("Sci-Fi");
+      displayPrompts(mainPrompt, simplerPrompt);
     }
 
     function getMystery() {
       const mysteryprompts = ['Create a story about a detective solving a murder case.', 'Write about a missing person who mysteriously reappears.', 'Describe a haunted house and the secrets it holds.', 'Create a story about a series of seemingly unrelated murders connected by a common thread.', 'Write about a detective investigating a disappearance in a small, isolated town.', 'Describe a heist gone wrong and the consequences for those involved.', 'Craft a narrative about a mysterious artifact with supernatural powers.', 'Write about a cold case that gets reopened decades later.', 'Create a story about a con artist who gets in over their head.', 'Describe a detective solving a murder in a futuristic city.', 'Write about a haunted object that brings tragedy to its owners.', 'Craft a narrative about a conspiracy within a government agency.', 'Describe a locked-room mystery where the killer\'s identity seems impossible to determine.'];
       const MrandomIndex = Math.floor(Math.random() * mysteryprompts.length);
-      const subject = mysteryprompts[MrandomIndex];
-      document.getElementById('out').textContent = subject;
+      const mainPrompt = mysteryprompts[MrandomIndex];
+      const simplerPrompt = getRandomSimplerPrompt("Mystery");
+      displayPrompts(mainPrompt, simplerPrompt);
     }
 
     function getHistoricalfiction() {
       const historicalfictionprompts = ['Write about a love story set during World War II.', 'Describe a famous historical event from an alternative perspective.', 'Create a narrative about a character living during the Renaissance.', 'Write about a forbidden romance between individuals from warring factions.', 'Describe a rebellion against an oppressive monarchy in medieval times.', 'Craft a story about a famous historical figure from the perspective of their spouse.', 'Write about a journey along the Silk Road during ancient times.', 'Describe a family\'s struggle to survive during a historical natural disaster.', 'Create a narrative about a slave\'s quest for freedom in the American South.', 'Write about a secret society operating during a pivotal moment in history.', 'Craft a story about a spy during World War I.', 'Describe a forbidden love affair in Victorian-era England.', 'Write about a group of explorers searching for a legendary lost city.'];
       const HFarandomIndex = Math.floor(Math.random() * historicalfictionprompts.length);
-      const subject = historicalfictionprompts[HFarandomIndex];
-      document.getElementById('out').textContent = subject;
+      const mainPrompt = historicalfictionprompts[HFarandomIndex];
+      const simplerPrompt = getRandomSimplerPrompt("Historical Fiction");
+      displayPrompts(mainPrompt, simplerPrompt);
     }
 
     function getInformative() {
       const informativeprompts = ['Explain how to build a birdhouse.', 'Discuss the benefits of a vegan diet.', 'Describe the process of photosynthesis.', 'Explain the science behind climate change and its effects on the planet.', 'Discuss the process of artificial intelligence and its applications in everyday life.', 'Describe the history and cultural significance of a traditional dance.', 'Explain the benefits of meditation for mental health.', 'Discuss the impact of deforestation on biodiversity.', 'Describe the process of sustainable farming and its importance.', 'Explain the role of neurotransmitters in regulating mood and behavior.', 'Discuss the potential benefits and drawbacks of universal basic income.', 'Explain the concept of herd immunity and its importance in vaccination.', 'Describe the psychological effects of long-term isolation on the human mind.'];
       const IarandomIndex = Math.floor(Math.random() * informativeprompts.length);
-      const subject = informativeprompts[IarandomIndex];
-      document.getElementById('out').textContent = subject;
+      const mainPrompt = informativeprompts[IarandomIndex];
+      const simplerPrompt = getRandomSimplerPrompt("Informative");
+      displayPrompts(mainPrompt, simplerPrompt);
     }
   </script>
 </body>
 </html>
-
